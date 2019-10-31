@@ -1,15 +1,18 @@
 import React from "react";
 import "./style.css";
+// import Navbar from "../Navbar/Navbar";
 
 function GeneralCard(props) {
   return (
-    <div className="card">
+    <div className="card" onClick={() => props.handleIncrement()}>
       <div className="img-container">
-        <img
-          // alt="Mr. Krabs"
-          src={props.image}
-          // src="C:/Users/paras/Desktop/github/clicky-game/public/Krabs.png"
-        />
+        <a href="#">
+          <img
+            // alt={props.name}
+            src={props.image}
+            // src="C:/Users/paras/Desktop/github/clicky-game/public/Krabs.png"
+          />
+        </a>
       </div>
       {/* <div className="content">
         <ul>
