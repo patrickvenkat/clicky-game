@@ -4,9 +4,21 @@ import "./Navbar.css";
 function Navbar(props) {
   return (
     <div className="container-fullwidth">
-      <nav className="navbar navbar-expand-lg navbar-dark bg-primary" data-spy="affix">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-primary justify-content" data-spy="affix">
         <a className="navbar-brand" href="#">
           Clicky Game
+        </a>
+
+        <a className="navbar-brand" href="#">
+          {props.message}
+        </a>
+
+        <a className="navbar-brand" href="#">
+          Game Score: {props.score}
+        </a>
+
+        <a className="navbar-brand" href="#">
+         |  High Score : {props.maxScore}
         </a>
         {/* <button
           className="navbar-toggler"
@@ -19,13 +31,13 @@ function Navbar(props) {
           <span className="navbar-toggler-icon" />
         </button> */}
 
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav mr-auto">
+        {/* <div className="collapse navbar-collapse" id="navbarSupportedContent"> */}
+          {/* <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
               <a className="nav-link" href="#">
                 Score: {props.score} <span className="sr-only">(current)</span>
               </a>
-            </li>
+            </li> */}
             {/* <li className="nav-item">
               <a className="nav-link" href="#">
                 Link
@@ -61,7 +73,7 @@ function Navbar(props) {
                 Disabled
               </a>
             </li> */}
-          </ul>
+          {/* </ul> */}
           {/* <form className="form-inline my-2 my-lg-0">
             <input
               className="form-control mr-sm-2"
@@ -73,7 +85,7 @@ function Navbar(props) {
               Search
             </button>
           </form> */}
-        </div>
+        {/* </div> */}
       </nav>
     </div>
   );

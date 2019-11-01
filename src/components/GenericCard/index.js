@@ -4,7 +4,7 @@ import "./style.css";
 
 function GeneralCard(props) {
   return (
-    <div className="card" onClick={() => props.handleIncrement()}>
+    <div className="card" onClick={() => props.imageEvent(props.id)}>
       <div className="img-container">
         <a href="#">
           <img

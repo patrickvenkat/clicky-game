@@ -11,13 +11,50 @@ import GeneralCard from "./components/GenericCard";
 
     state = {
       Coffee,
-      gameCount: 0
+      gameScore: 0,
+      highScore: 0,
+      clicked: [],
+      message: "Start the game"
     };
 
       // handleIncrement increments this.state.count by 1
-    handleIncrement = () => {
-    // We always use the setState method to update a component's state
-    this.setState({ gameCount: this.state.gameCount + 1 });
+    imageEvent = (id) => {
+      console.log("id" + id);
+      if (this.state.clicked.indexOf(id) === -1){
+        var newGameScore = this.state.gameScore + 1;
+        this.setState({ gameScore: newGameScore });
+        this.state.clicked.push(id);
+        this.setState({clicked: this.state.clicked});
+        this.state.message = "Continue. Great Job!"
+        this.setState({message: this.state.message});
+        console.log(this.state.clicked);
+        console.log("game score" + newGameScore);
+
+        if (newGameScore > this.state.highScore){
+          this.setState({ highScore: newGameScore });
+        }
+        console.log("highScore" + this.state.highScore);
+        this.shuffle(this.state.Coffee);
+      }else{
+        console.log("You clicked again on this image with ID = " + id + " Game restarts now" );
+        this.state.message = "Darn. You clicked on that image again. Start over"
+        this.setState({message: this.state.message});
+        if (newGameScore > this.state.highScore){
+          this.setState({ highScore: newGameScore });
+        }
+        console.log("highScore" + this.state.highScore);
+        this.setState({ gameScore: 0 });
+        this.state.clicked.length = 0;
+      }
+    };
+
+    shuffle = (imageArray) => {
+      for (let i = imageArray.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [imageArray[i], imageArray[j]] = [imageArray[j], imageArray[i]];
+      }
+      // console.log(imageArray);
+      return imageArray;
     };
 
     render(){
@@ -25,7 +62,10 @@ import GeneralCard from "./components/GenericCard";
       <Wrapper>
         <div className="container">
           <Navbar 
-          score={this.state.gameCount}/>
+          message={this.state.message}
+          score={this.state.gameScore}
+          maxScore={this.state.highScore}
+          />
           <Jumbotron />
         </div>
         <Title></Title>
@@ -33,7 +73,7 @@ import GeneralCard from "./components/GenericCard";
         {this.state.Coffee.map(beverage => (
           <GeneralCard
             // removeFriend={this.removeFriend}
-            handleIncrement={this.handleIncrement}
+            imageEvent={this.imageEvent}
             id={beverage.id}
             image={beverage.image}
           />
