@@ -5,11 +5,18 @@ function Navbar(props) {
   return (
     <div className="container-fullwidth">
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary justify-content" data-spy="affix">
+
+      {/* <div class="d-flex bd-highlight">
+        <div class="p-2 flex-fill bd-highlight">Flex item with a lot of content</div>
+        <div class="p-2 flex-fill bd-highlight">Flex item</div>
+       <div class="p-2 flex-fill bd-highlight">Flex item</div>
+      </div> */}
+
         <a className="navbar-brand" href="#">
           Clicky Game
         </a>
 
-        <a className="navbar-brand" href="#">
+        <a className={props.messageColor} href="#">
           {props.message}
         </a>
 

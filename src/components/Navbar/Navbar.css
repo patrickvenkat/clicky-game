@@ -3,3 +3,8 @@
     width: 100%;
     z-index: 9999 !important;
   }
+
+.navbar{
+  display: flex;
+  justify-content: space-between;
+}
